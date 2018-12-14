@@ -8,14 +8,14 @@ public class ItemProduto {
 	
 
 	//.............. Contructs & toString ..................
-	public ItemProduto(Produto produto, int quantidade) {
+	public ItemProduto(Produto produto, int quantidade, Carrinho carrinho) {
 		super();
 		this.produto = produto;
 		this.quantidade = quantidade;
 		this.preco = this.produto.getPreco();
 	}
 	
-	public ItemProduto(Produto produto, int quantidade, double preco) {
+	public ItemProduto(Produto produto, int quantidade, Carrinho carrinho, double preco) {
 		super();
 		this.produto = produto;
 		this.quantidade = quantidade;
