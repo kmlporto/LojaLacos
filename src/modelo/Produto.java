@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.List;
+
 import dao.IDInterface;
 
 public class Produto implements IDInterface {
@@ -10,6 +12,7 @@ public class Produto implements IDInterface {
 	private String cor;
 	private double largura;
 	private double preco;
+	private List<ItemProduto> itens;
 
 	public Produto () {}
 	
@@ -88,6 +91,14 @@ public class Produto implements IDInterface {
 	
 	public void setPreco(double preco) {
 		this.preco = preco;
+	}
+	
+	public void add(ItemProduto item) {
+		this.itens.add(item);
+	}
+	
+	public void remove(ItemProduto item) {
+		this.itens.remove(item);
 	}
 
 }

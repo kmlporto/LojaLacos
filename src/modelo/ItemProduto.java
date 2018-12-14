@@ -11,6 +11,7 @@ public class ItemProduto {
 	public ItemProduto(Produto produto, int quantidade, Carrinho carrinho) {
 		super();
 		this.produto = produto;
+		this.produto.add(this);
 		this.quantidade = quantidade;
 		this.preco = this.produto.getPreco();
 	}
@@ -18,6 +19,7 @@ public class ItemProduto {
 	public ItemProduto(Produto produto, int quantidade, Carrinho carrinho, double preco) {
 		super();
 		this.produto = produto;
+		this.produto.add(this);
 		this.quantidade = quantidade;
 		this.preco = preco;
 	}
