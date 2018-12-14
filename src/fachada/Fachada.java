@@ -205,15 +205,15 @@ public class Fachada {
 	
 	// ............................. Item/Carrinho/Pagamento ........................
 	
-	public static ItemProduto cadastrarItemProduto(Produto produto, int quantidade, double preco) throws Exception{
+	public static ItemProduto cadastrarItemProduto(Produto produto, int quantidade, Carrinho carrinho, double preco) throws Exception{
 		DAO.begin();
 		if(produto.getEstoque()<quantidade)
 			throw new Exception("cadastrar item - nao possui a quantidade desejada em estoque");
 		ItemProduto item = null;
 		if(preco > 0)
-			item = new ItemProduto(produto, quantidade, preco);
+			item = new ItemProduto(produto, quantidade,carrinho, preco);
 		else 
-			item = new ItemProduto(produto, quantidade);
+			item = new ItemProduto(produto, quantidade, carrinho);
 
 		daoitemproduto.create(item);
 		DAO.commit();
@@ -226,7 +226,7 @@ public class Fachada {
 		ItemProduto item = carrinho.localizar(produto);
 		
 		if (item == null){
-				item = Fachada.cadastrarItemProduto(produto, quantidade, preco);
+				item = Fachada.cadastrarItemProduto(produto, quantidade, carrinho, preco);
 		}
 		carrinho.adicionar(item);
 		produto.setEstoque(produto.getEstoque()-quantidade);

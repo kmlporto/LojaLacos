@@ -4,7 +4,10 @@ public class ItemProduto {
 	private Produto produto;
 	private int quantidade;
 	private double preco;
+	private Carrinho carrinho;
 	
+
+	//.............. Contructs & toString ..................
 	public ItemProduto(Produto produto, int quantidade) {
 		super();
 		this.produto = produto;
@@ -30,6 +33,7 @@ public class ItemProduto {
 				"\n- preço(und):" + preco;
 	}
 	
+	//.............. get's & set's..................
 	public int getQuantidade() {
 		return quantidade;
 	}
@@ -48,5 +52,13 @@ public class ItemProduto {
 
 	public void setPreco(double preco) {
 		this.preco = preco;
+	}
+
+	public Carrinho getCarrinho() {
+		return carrinho;
+	}
+
+	public void setCarrinho(Carrinho carrinho) {
+		this.carrinho = carrinho;
 	}
 }
