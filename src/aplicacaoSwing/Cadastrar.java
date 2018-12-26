@@ -53,16 +53,17 @@ public class Cadastrar {
 				Fachada.adicionarItemNoCarrinho(c, Fachada.consultarProdutoDMCL("presilha com laco", "presilha","verde", 0.25), 1, 0);
 			}
 			else 
-				System.out.println("Cliente "+ nome+" não encontrado");
+				System.out.println("Cliente "+ nome+" nao encontrado");
 			nome = "Maria Luiza";
 			c = Fachada.consultarClientePorNome(nome);
 			if (c!=null) {
+			
 			Fachada.adicionarItemNoCarrinho(c,Fachada.consultarProdutoDMCL("piranha pequena com estampa de baloes","piranha", "azul", 0.05), 1, 0);
 			Fachada.adicionarItemNoCarrinho(c,Fachada.consultarProdutoDMCL("piranha pequena com estampa de baloes","piranha", "vermelho", 0.05), 1, 0);
 			Fachada.adicionarItemNoCarrinho(c,Fachada.consultarProdutoDMCL("piranha pequena com estampa de baloes","piranha", "branco", 0.05), 1, 0);
 			}
 			else
-				System.out.println("Cliente "+ nome+" não encontrado");
+				System.out.println("Cliente "+ nome+" nao encontrado");
 			
 			nome = "Yasmin";
 			c = Fachada.consultarClientePorNome(nome);
@@ -71,7 +72,7 @@ public class Cadastrar {
 			Fachada.adicionarItemNoCarrinho(c,Fachada.consultarProdutoDMCL("presilha com laco", "presilha", "verde", 0.15), 2, 0);
 			}
 			else
-				System.out.println("Cliente "+ nome+" não encontrado");
+				System.out.println("Cliente "+ nome+" nao encontrado");
 			
 			nome = "Beatriz";
 			c = Fachada.consultarClientePorNome(nome);
@@ -80,7 +81,7 @@ public class Cadastrar {
 				Fachada.adicionarItemNoCarrinho(c,Fachada.consultarProdutoDMCL("tiara para bebe", "tiara","branco", 0.10), 5,0 );
 			}
 			else
-				System.out.println("Cliente "+ nome+" não encontrado");
+				System.out.println("Cliente "+ nome+" nao encontrado");
 			
 			nome = "Aretuza";
 			c = Fachada.consultarClientePorNome(nome);
@@ -88,7 +89,7 @@ public class Cadastrar {
 				Fachada.adicionarItemNoCarrinho(c,Fachada.consultarProdutoDMCL("presilha com laco","presilha","marrom",0.15), 1, 0);
 			}
 			else 
-				System.out.println("Cliente "+ nome+" não encontrado");
+				System.out.println("Cliente "+ nome+" nao encontrado");
 			
 			System.out.println("itens no carrinho - foi!");
 		} catch (Exception e) {System.out.println(e.getMessage());}

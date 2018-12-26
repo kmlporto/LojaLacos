@@ -1,4 +1,4 @@
-package dao;
+package daodb4o;
 
 import java.util.List;
 

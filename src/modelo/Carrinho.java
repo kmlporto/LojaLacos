@@ -17,8 +17,8 @@ public class Carrinho {
 	
 	@Override
 	public String toString() {
-		return "Carrinho \n" + (pagamento != null ? "\n  pagamento: " + pagamento + ", " : "")
-				+ (itens != null ? "\n  itens: " + itens : "") + "\n  frete: \n" + frete + "\n  total: " + total;
+		return "Carrinho: \n  cliente: "+ cliente.getNome() + (pagamento != null ? "\n  pagamento: " + pagamento + ", " : "")
+				+ (itens != null ? "\n  itens: " + itens : "") + "\n  frete: " + frete + "\n  total: " + total;
 	}
 
 	// .............. gets e sets ..............

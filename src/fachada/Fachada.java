@@ -7,14 +7,14 @@ import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import dao.DAO;
-import dao.DAOAdmin;
-import dao.DAOCarrinho;
-import dao.DAOCliente;
-import dao.DAOItemProduto;
-import dao.DAOPagamento;
-import dao.DAOProduto;
-import dao.DAOUsuario;
+import daodb4o.DAO;
+import daodb4o.DAOAdmin;
+import daodb4o.DAOCarrinho;
+import daodb4o.DAOCliente;
+import daodb4o.DAOItemProduto;
+import daodb4o.DAOPagamento;
+import daodb4o.DAOProduto;
+import daodb4o.DAOUsuario;
 import modelo.Admin;
 import modelo.Carrinho;
 import modelo.Cliente;
@@ -94,9 +94,7 @@ public class Fachada {
 			throw new Exception("cadastrar cliente - cliente "+ nome + " ja cadastrado");
 		byte[] bytepassword  = geraHashBytes(password);
 		cliente = new Cliente(user, bytepassword, nome, cpf, email);
-		Carrinho carrinho = new Carrinho();
 		daocliente.create(cliente);
-		daocarrinho.create(carrinho);
 		DAO.commit();
 		return cliente;
 	}
@@ -196,7 +194,9 @@ public class Fachada {
 	public static List<Produto> listarProdutos() {
 		return daoproduto.readAll();		
 	}
-	
+	public static List<Produto> listarProdutosPorModelo(String modelo){
+		return daoproduto.consultarProdutosPorModelo(modelo);
+	}
 
 	public static Carrinho consultarCarrinhoCliente(Cliente cliente) {
 		return daocarrinho.consultarCarrinhoCliente(cliente);
@@ -319,19 +319,19 @@ public class Fachada {
 		return result;
 	}
 	
-	public static String consultarProdutosPorTipo(String tipo) {
-		List<Produto> result = daoproduto.consultarProdutosPorTipo(tipo);
+	public static String consultarProdutosPorModelo(String modelo) {
+		List<Produto> result = daoproduto.consultarProdutosPorModelo(modelo);
 		String txt="";
 		if (result!=null) {
 			for (Produto p :result) {
 				txt+= p.toString();
 			}
 		}else
-			txt+= "nao possui produtos do tipo "+tipo;
+			txt+= "nao possui produtos do tipo "+modelo;
 		return txt;
 	}
 	
-	public static Produto consultarProdutoDMCL(String descricao,String modelo,  String cor, double largura){
+	public static Produto consultarProdutoDMCL(String descricao, String modelo, String cor, double largura){
 		Produto result = daoproduto.consultarProdutoDMCL(descricao,modelo,cor,largura);
 		return result;
 	}

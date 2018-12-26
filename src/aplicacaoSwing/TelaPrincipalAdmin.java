@@ -151,17 +151,6 @@ public class TelaPrincipalAdmin extends JFrame{
 			}
 		});
 		mnCarrinho.add(listarCarrinho);
-		
-		JMenu mnConta = new JMenu("     Conta     ");
-		menuBar.add(mnConta); 
 
-		JMenuItem sairConta = new JMenuItem("      Sair     ");
-		sairConta.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				//TelaSairConta j = new TelaSairConta();
-				//j.setVisible(true);
-			}
-		});
-		mnConta.add(sairConta);
 	}
 }

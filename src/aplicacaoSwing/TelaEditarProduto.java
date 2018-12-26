@@ -146,7 +146,6 @@ public class TelaEditarProduto extends JFrame {
 				catch(Exception erro){
 					lblmsg.setText(erro.getMessage());
 				}
-				Fachada.finalizar();
 			}
 		});
 		btnAlterar.setBounds(208, 208, 108, 23);

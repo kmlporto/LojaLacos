@@ -1,8 +1,9 @@
 package modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import dao.IDInterface;
+import daodb4o.IDInterface;
 
 public class Produto implements IDInterface {
 	private int id;
@@ -12,9 +13,10 @@ public class Produto implements IDInterface {
 	private String cor;
 	private double largura;
 	private double preco;
-	private List<ItemProduto> itens;
+	private List<ItemProduto> itens = new ArrayList<ItemProduto>();
 
 	public Produto () {}
+	
 	
 	public Produto( String descricao,String modelo, int estoque, String cor, double largura, double preco) {
 		super();
@@ -53,7 +55,6 @@ public class Produto implements IDInterface {
 	}
 	
 	public String getModelo() {
-		
 		return modelo;
 	}
 	

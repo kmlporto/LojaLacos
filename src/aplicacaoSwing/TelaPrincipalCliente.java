@@ -87,14 +87,15 @@ public class TelaPrincipalCliente extends JFrame{
 		
 		JMenu mnCarrinho = new JMenu("   Meu Carrinho     ");
 		menuBar.add(mnCarrinho);
-		// daqui em diante
+
 		JMenuItem adicionarItem = new JMenuItem("   Adicionar Item ");
 		adicionarItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-//				TelaListagemItens j = new TelaListagemItens();
-//				j.setVisible(true);
+				TelaAdicionarItem j = new TelaAdicionarItem();
+				j.setVisible(true);
 			}
 		});
+		mnCarrinho.add(adicionarItem);
 		
 		JMenuItem listarItens = new JMenuItem("          Listar ");
 		mnCarrinho.add(listarItens);
@@ -104,7 +105,7 @@ public class TelaPrincipalCliente extends JFrame{
 				j.setVisible(true);
 			}
 		});
-		mnCarrinho.add(adicionarItem);
+		mnCarrinho.add(listarItens);
 		
 		JMenuItem excluirItem = new JMenuItem("     Excluir Item ");
 		excluirItem.addActionListener(new ActionListener() {
@@ -113,27 +114,7 @@ public class TelaPrincipalCliente extends JFrame{
 //				j.setVisible(true);
 			}
 		});
-		mnCarrinho.add(excluirItem);
-		
-		JMenu mnConta = new JMenu("     Conta         ");
-		menuBar.add(mnConta); 
-		
-		JMenuItem editarConta = new JMenuItem("      Editar     ");
-		editarConta.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				//TelaSairConta j = new TelaSairConta();
-				//j.setVisible(true);
-			}
-		});
-		mnConta.add(editarConta);
-		
-		JMenuItem sairConta = new JMenuItem("        Sair       ");
-		sairConta.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				//TelaSairConta j = new TelaSairConta();
-				//j.setVisible(true);
-			}
-		});
-		mnConta.add(sairConta);
+//		mnCarrinho.add(excluirItem);
+
 	}
 }

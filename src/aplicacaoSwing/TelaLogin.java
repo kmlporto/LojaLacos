@@ -55,7 +55,7 @@ public class TelaLogin extends JFrame {
 		
 		setBounds(100, 100, 450, 300);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("Consulta Medica");
+		setTitle("Pituca Acessorios");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 291, 306);
@@ -76,7 +76,7 @@ public class TelaLogin extends JFrame {
 		contentPane.add(this.textFieldUser);
 		textFieldUser.setColumns(10);
 
-		lblUser = new JLabel("Usuário: ");
+		lblUser = new JLabel("Usuario: ");
 		lblUser.setFont(new Font("Rockwell", Font.PLAIN, 22));
 		lblUser.setBounds(10, 89, 96, 26);
 		contentPane.add(this.lblUser);
@@ -101,22 +101,23 @@ public class TelaLogin extends JFrame {
 					if (usuario != null) {
 					    if (usuario instanceof Cliente){
 					        TelaPrincipalCliente telaCliente = new TelaPrincipalCliente();
+					        System.out.println("cliente");
 					        telaCliente.setVisible(true);
 					    }else if (usuario instanceof Admin){
 					        TelaPrincipalAdmin telaAdmin = new TelaPrincipalAdmin();
+					        System.out.println("admin");
 					        telaAdmin.setVisible(true);
 					    }else {
 						    JOptionPane.showMessageDialog(contentPane, "Senha errada!");
 						}
 						dispose();
 					}else {
-					    JOptionPane.showMessageDialog(contentPane, "Usuário não encontrado");
+					    JOptionPane.showMessageDialog(contentPane, "Usuario nao encontrado");
 					}
 				}
 				catch(Exception erro){
 					erro.printStackTrace();
 				}
-				Fachada.finalizar();
 			}
 		});
 		btnLogin.setBounds(151, 218, 110, 35);
@@ -133,7 +134,7 @@ public class TelaLogin extends JFrame {
 		button.setFont(new Font("Rockwell", Font.PLAIN, 22));
 		button.setBounds(227, 11, 34, 34);
 		contentPane.add(button);
-		Fachada.finalizar();
+
 	}
 
 }
