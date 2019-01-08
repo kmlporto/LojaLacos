@@ -22,7 +22,6 @@
 	<persistence-unit name="loja-eclipselink" transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
-
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 		    <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/loja" />
@@ -34,7 +33,6 @@
 		    <property name="eclipselink.logging.level" 	value="fine"/>	    
 		    <property name="eclipselink.logging.file" 	value="log.txt"/>	
 		</properties>	
-
 	</persistence-unit>
 				
 </persistence>

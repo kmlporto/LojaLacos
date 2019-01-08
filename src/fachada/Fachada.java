@@ -7,6 +7,9 @@ import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import daojpa.*;
+
+/*
 import daodb4o.DAO;
 import daodb4o.DAOAdmin;
 import daodb4o.DAOCarrinho;
@@ -15,6 +18,7 @@ import daodb4o.DAOItemProduto;
 import daodb4o.DAOPagamento;
 import daodb4o.DAOProduto;
 import daodb4o.DAOUsuario;
+*/
 import modelo.Admin;
 import modelo.Carrinho;
 import modelo.Cliente;
