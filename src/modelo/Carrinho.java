@@ -3,6 +3,9 @@ package modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Carrinho {
 	private Pagamento pagamento;
 	private List<ItemProduto> itens = new ArrayList<ItemProduto>();

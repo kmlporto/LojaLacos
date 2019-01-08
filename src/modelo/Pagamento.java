@@ -1,5 +1,8 @@
 package modelo;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Pagamento {
 	private String tipo;
 	private String data;

@@ -1,5 +1,8 @@
 package modelo;
 
+import javax.persistence.Entity;
+
+@Entity
 public class ItemProduto {
 	private Produto produto;
 	private int quantidade;
@@ -32,7 +35,7 @@ public class ItemProduto {
 				"\n   modelo: " + produto.getModelo() +
 				"\n   cor: " + produto.getCor() +
 				"\n- quantidade:" + quantidade +
-				"\n- preço(und):" + preco;
+				"\n- preï¿½o(und):" + preco;
 	}
 	
 	//.............. get's & set's..................

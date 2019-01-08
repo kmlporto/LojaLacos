@@ -2,8 +2,9 @@ package modelo;
 
 import java.util.Arrays;
 
+import javax.persistence.Entity;
+@Entity
 public class Usuario {
-
 	private String user;
 	private byte[] password;
 	private String nome;

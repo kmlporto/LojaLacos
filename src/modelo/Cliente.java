@@ -1,5 +1,8 @@
 package modelo;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Cliente extends Usuario{
 	private Carrinho carrinho;
 	

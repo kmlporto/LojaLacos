@@ -1,10 +1,11 @@
 package modelo;
 
-public class Admin extends Usuario{
+import javax.persistence.Entity;
 
+@Entity
+public class Admin extends Usuario{
 	public Admin(String user, byte[] password, String nome, String cpf, String email) {
 		super(user, password, nome, cpf, email);
-		
 	}
 	@Override
 	public String toString() {
