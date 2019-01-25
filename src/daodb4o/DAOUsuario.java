@@ -7,19 +7,17 @@ import com.db4o.query.Query;
 import modelo.Usuario;
 
 public class DAOUsuario extends DAO<Usuario> {
-	public Usuario verificaUsuario (String user, byte [] password) {
+	public Usuario verificaUsuario (String user, String password) {
 		Query q = manager.query();	
 		q.constrain((Evaluation) candidate -> {
 			// TODO Auto-generated method stub
 			Usuario u = (Usuario) candidate.getObject();
-			for (int j = 0; j < password.length; j++)
-				if (password[j] == u.getPassword()[j])
-					continue;
-				else {
-					candidate.include(false);
-					return;
-				}						
-			candidate.include(true);
+			if (!password.equals(u.getPassword()))
+				candidate.include(true);
+			else {
+				candidate.include(false);
+			}						
+			return;
 		});
 
 		List<Usuario> usuarios = q.execute();

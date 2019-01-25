@@ -1,16 +1,29 @@
 package modelo;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class ItemProduto {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	@ManyToOne
 	private Produto produto;
 	private int quantidade;
 	private double preco;
+	@ManyToOne
 	private Carrinho carrinho;
 	
 
 	//.............. Contructs & toString ..................
+	public ItemProduto() {
+		super();
+	}
+	
 	public ItemProduto(Produto produto, int quantidade, Carrinho carrinho) {
 		super();
 		this.produto = produto;

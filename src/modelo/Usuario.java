@@ -1,20 +1,27 @@
 package modelo;
 
-import java.util.Arrays;
-
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
 @Entity
 public class Usuario {
-	private String user;
-	private byte[] password;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	private String username;
+	private String password;
 	private String nome;
 	private String cpf;
 	private String email;
 	
+	public Usuario() {}
 	
-	public Usuario(String user, byte[] password, String nome, String cpf, String email) {
+	public Usuario(String user, String password, String nome, String cpf, String email) {
 		super();
-		this.user = user;
+		this.username = user;
 		this.password = password;
 		this.nome = nome;
 		this.cpf = cpf;
@@ -22,10 +29,10 @@ public class Usuario {
 	}
 
 	public String getUser() {
-		return user;
+		return username;
 	}
 
-	public byte[] getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
@@ -42,7 +49,7 @@ public class Usuario {
 	}
 
 	public void setUser(String user) {
-		this.user = user;
+		this.username = user;
 	}
 
 	public String getEmail() {
@@ -55,7 +62,7 @@ public class Usuario {
 	
 	@Override
 	public String toString() {
-		return "Usuario\n user: " + user + "\n password: " + Arrays.toString(password) + "\n nome: " + nome + "\n cpf: " + cpf;
+		return "Usuario\n user: " + username + "\n password: " + password + "\n nome: " + nome + "\n cpf: " + cpf;
 	}
 
 }

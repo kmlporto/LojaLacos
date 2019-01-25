@@ -4,9 +4,11 @@ import javax.persistence.Entity;
 
 @Entity
 public class Admin extends Usuario{
-	public Admin(String user, byte[] password, String nome, String cpf, String email) {
-		super(user, password, nome, cpf, email);
+	public Admin() {
+		super();
 	}
+	
+
 	@Override
 	public String toString() {
 		return "Admin"
@@ -14,5 +16,10 @@ public class Admin extends Usuario{
 				+ "\n cpf: " + this.getCpf() 
 				+ "\n email: " + this.getEmail();
 				
+	}
+
+	public Admin(String user, String password, String nome, String cpf, String email) {
+		super(user, password, nome, cpf, email);
+		// TODO Auto-generated constructor stub
 	}
 }

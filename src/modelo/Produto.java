@@ -2,10 +2,13 @@ package modelo;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Produto {
@@ -18,9 +21,12 @@ public class Produto {
 	private String cor;
 	private double largura;
 	private double preco;
+	@OneToMany(mappedBy="produto", cascade=CascadeType.ALL, orphanRemoval=true)
 	private List<ItemProduto> itens = new ArrayList<ItemProduto>();
 
-	public Produto () {}
+	public Produto () {
+		super();
+	}
 	
 	public Produto( String descricao,String modelo, int estoque, String cor, double largura, double preco) {
 		super();

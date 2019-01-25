@@ -7,25 +7,21 @@ import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import daojpa.*;
-
-/*
-import daodb4o.DAO;
-import daodb4o.DAOAdmin;
-import daodb4o.DAOCarrinho;
-import daodb4o.DAOCliente;
-import daodb4o.DAOItemProduto;
-import daodb4o.DAOPagamento;
-import daodb4o.DAOProduto;
-import daodb4o.DAOUsuario;
-*/
-import modelo.Admin;
+import daojpa.DAO;
+import daojpa.DAOAdmin;
+import daojpa.DAOCarrinho;
+import daojpa.DAOCliente;
+import daojpa.DAOItemProduto;
+import daojpa.DAOPagamento;
+import daojpa.DAOProduto;
+import daojpa.DAOUsuario;
 import modelo.Carrinho;
 import modelo.Cliente;
 import modelo.ItemProduto;
 import modelo.Pagamento;
 import modelo.Produto;
 import modelo.Usuario;
+import modelo.Admin;
 
 public class Fachada {
 	private static DAOCliente daocliente = new DAOCliente();
@@ -66,7 +62,7 @@ public class Fachada {
 	
 	public static Usuario realizarLogin (String user, String password) throws Exception {
 		DAOUsuario usuarioDAO = new DAOUsuario();
-		Usuario usuario = usuarioDAO.verificaUsuario(user, geraHashBytes(password));
+		Usuario usuario = usuarioDAO.verificaUsuario(user, password);
 		logado = usuario;
 		return usuario;
 	}
@@ -79,11 +75,10 @@ public class Fachada {
 	
 	public static Admin cadastrarAdmin(String user, String password, String nome, String cpf, String email) throws Exception{
 		DAO.begin();
-		byte[] bytepassword  = geraHashBytes(password);
 		Admin admin = daoadmin.consultarAdminPorNome(nome);
 		if(admin!= null)
 			throw new Exception("cadastrar admin - admin "+ nome + " ja cadastrado");
-		admin = new Admin(user, bytepassword, nome, cpf, email);
+		admin = new Admin(user, password, nome, cpf, email);
 		daoadmin.create(admin);
 		DAO.commit();
 		return admin;
@@ -96,8 +91,7 @@ public class Fachada {
 		Cliente cliente = daocliente.consultarClientePorNome(nome);
 		if(cliente != null)
 			throw new Exception("cadastrar cliente - cliente "+ nome + " ja cadastrado");
-		byte[] bytepassword  = geraHashBytes(password);
-		cliente = new Cliente(user, bytepassword, nome, cpf, email);
+		cliente = new Cliente(user, password, nome, cpf, email);
 		daocliente.create(cliente);
 		DAO.commit();
 		return cliente;

@@ -1,14 +1,21 @@
 package modelo;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Pagamento {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 	private String tipo;
 	private String data;
 	private double valor;
 	private boolean finalizado;
 	
+	public Pagamento() {}
 	public Pagamento(String tipo, String data, double valor, boolean finalizado) {
 		super();
 		this.tipo = tipo;

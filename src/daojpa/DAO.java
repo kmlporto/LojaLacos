@@ -17,8 +17,8 @@ public abstract class DAO<L> implements DAOInterface<L> {
 	
 	public static void open() {
 		if (manager == null) {
-			HashMap<String,String> properties = new HashMap<String,String>();		
-			factory = Persistence.createEntityManagerFactory("loja-eclipselink", properties);
+			//HashMap<String,String> properties = new HashMap<String,String>();		
+			factory = Persistence.createEntityManagerFactory("loja-eclipselink");
 			manager = factory.createEntityManager();
 		}
 	}

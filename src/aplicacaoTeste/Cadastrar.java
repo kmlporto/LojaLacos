@@ -8,6 +8,7 @@ public class Cadastrar {
 	public Cadastrar(){
 		Fachada.inicializar();
 		System.out.println("cadastrando...");
+		
 		try {
 			Fachada.cadastrarProduto("faixa com laco", "faixa", 8, "vermelho", 0.10, 17);
 			Fachada.cadastrarProduto("faixa com laco", "faixa", 8, "azul", 0.10, 17);
@@ -33,7 +34,7 @@ public class Cadastrar {
 		} catch (Exception e) {System.out.println(e.getMessage());}
 		
 		try {
-			//Fachada.cadastrarCliente(user, password, nome, cpf, email)
+//			Fachada.cadastrarCliente(user, password, nome, cpf, email)
 			Fachada.cadastrarCliente("kmlporto", "123456" ,"Kamila", "999.999.999-99", "kamila@email.com");
 			Fachada.cadastrarCliente("areta", "123456","Aretuza", "888.888.888-88", "aretuza@email.com");
 			Fachada.cadastrarCliente("malu", "123456","Maria Luiza", "777.777.777-77", "malu@email.com");

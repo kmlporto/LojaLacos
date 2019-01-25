@@ -3,14 +3,26 @@ package modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Carrinho {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	@OneToOne
 	private Pagamento pagamento;
+	@OneToMany(mappedBy="carrinho", cascade=CascadeType.ALL, orphanRemoval=true)
 	private List<ItemProduto> itens = new ArrayList<ItemProduto>();
 	private double frete;
 	private double total;
+	@OneToOne
 	private Cliente cliente;
 	
 	// ........... construtor e toString .............	
