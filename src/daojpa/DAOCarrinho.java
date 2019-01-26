@@ -6,7 +6,6 @@ import javax.persistence.Query;
 
 import modelo.Carrinho;
 import modelo.Cliente;
-import modelo.ItemProduto;
 import modelo.Produto;
 
 public class DAOCarrinho extends DAO<Carrinho> {
@@ -18,18 +17,6 @@ public class DAOCarrinho extends DAO<Carrinho> {
 			);
 		q.setParameter("n", produto);
 		List<Carrinho> resultado = q.getResultList();
-		return resultado;
-	}
-	
-	public ItemProduto consultarItemNoCarrinho(Carrinho carrinho, Produto produto) {
-		Query q = manager.createQuery(
-				"select c "
-				+ "from carrinho c JOIN c.itens i JOIN i.produto p"
-				+ "where p= :n"
-			);
-		q.setParameter("n", produto);
-		q.setParameter("m", carrinho);
-		ItemProduto resultado = (ItemProduto) q.getSingleResult();
 		return resultado;
 	}
 	
