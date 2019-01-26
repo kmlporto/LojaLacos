@@ -168,15 +168,6 @@ public class Fachada {
 	
 	public static void excluirProduto(Produto produto) throws Exception {
 		DAO.begin();
-		List<Carrinho> carrinhos = daocarrinho.consultarCarrinhosComItem(produto);
-		if (carrinhos.size()>0){
-			for (Carrinho c: carrinhos){
-				ItemProduto item = daocarrinho.consultarItemNoCarrinho(produto);
-				c.remover(item);
-				daocarrinho.update(c);
-				daoitemproduto.delete(item);
-			}
-		}
 		daoproduto.delete(produto);
 		DAO.commit();
 	}
