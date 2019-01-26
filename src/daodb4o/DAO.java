@@ -49,7 +49,7 @@ public abstract class DAO<L> implements DAOInterface<L> {
 
 		config.common().objectClass(Produto.class).cascadeOnActivate(true);
 		config.common().objectClass(Produto.class).cascadeOnUpdate(true);
-		config.common().objectClass(Produto.class).cascadeOnDelete(false);
+		config.common().objectClass(Produto.class).cascadeOnDelete(true);
 		
 		// indexacao
 		config.common().objectClass(Cliente.class).objectField("nome").indexed(true);

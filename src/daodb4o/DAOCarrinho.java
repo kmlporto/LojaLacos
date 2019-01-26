@@ -17,16 +17,6 @@ public class DAOCarrinho extends DAO<Carrinho> {
 		List<Carrinho> resultado = q.execute();
 		return resultado;
 	}
-	public ItemProduto consultarItemNoCarrinho(Produto produto) {
-		Query q  =  manager.query();
-		q.constrain(Carrinho.class);
-		q.constrain(ItemProduto.class);
-		q.descend("produto").constrain(produto);
-		List<ItemProduto> resultado = q.execute();
-		if(resultado.size()>0)
-			return resultado.get(0);
-		return null;
-	}
 	
 	public Carrinho consultarCarrinhoCliente(Cliente cliente){
 		String cpf = cliente.getCpf();
