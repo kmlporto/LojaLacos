@@ -13,7 +13,7 @@ public class DAOProduto extends DAO<Produto>{
 	
 	public List<Produto> consultarProdutosPorDescricao(String descricao) {
 		Query q = manager.createQuery(
-			"select p from Produto p where p.descricao like :n;"
+			"select p from Produto p where p.descricao=:n;"
 		);
 		q.setParameter("n", descricao);
 		List<Produto> resultado = q.getResultList();

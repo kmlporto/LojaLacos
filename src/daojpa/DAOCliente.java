@@ -10,7 +10,7 @@ public class DAOCliente extends DAO<Cliente>{
 	
 	public Cliente consultarClientePorNome(String nome) {
 		Query q = manager.createQuery(
-				"select c from Cliente c where c.nome like :n"
+				"select c from Cliente c where c.nome=:n"
 			);
 		q.setParameter("n", nome);
 		List<Cliente> resultado = q.getResultList();
@@ -24,16 +24,14 @@ public class DAOCliente extends DAO<Cliente>{
 		Query q = manager.createQuery(
 				"select c from Cliente c where c.nome like :n"
 			);
-		String busca = new String();
-		busca = "%"+caracteres+"%";
-		q.setParameter("n", busca);
+		q.setParameter("n", caracteres);
 		List<Cliente> resultado = q.getResultList();
 		return resultado;
 	}
 	
 	public Cliente consultarClientePorCpf(String cpf) {
 		Query q = manager.createQuery(
-				"select c from Cliente c where c.cpf like :n"
+				"select c from Cliente c where c.cpf=:n"
 			);
 		q.setParameter("n", cpf);
 		Cliente resultado = (Cliente) q.getSingleResult();
@@ -42,7 +40,7 @@ public class DAOCliente extends DAO<Cliente>{
 	
 	public Cliente consultarClientePorEmail(String email) {
 		Query q = manager.createQuery(
-				"select c from Cliente c where c.email like :n"
+				"select c from Cliente c where c.email=:n"
 			);
 		q.setParameter("n", email);
 		Cliente resultado = (Cliente) q.getSingleResult();
