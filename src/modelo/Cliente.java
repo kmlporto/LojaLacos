@@ -1,11 +1,12 @@
 package modelo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 @Entity
 public class Cliente extends Usuario{
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	private Carrinho carrinho;
 	
 	public Cliente() {
