@@ -3,6 +3,7 @@ package daojpa;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import modelo.Cliente;
@@ -24,6 +25,7 @@ public class DAOProduto extends DAO<Produto>{
 	}
 	
 	public Produto consultarProdutoDMCL(String descricao,String modelo,  String cor, double largura) {
+		try {
 		Query q = manager.createQuery(
 				"select p from Produto p where p.descricao=:d AND  "
 				+ "p.modelo=:m AND p.cor=:c AND  p.largura=:l"
@@ -34,6 +36,9 @@ public class DAOProduto extends DAO<Produto>{
 		q.setParameter("l", largura);		
 		Produto resultado = (Produto) q.getSingleResult();
 		return resultado;
+		} catch (NoResultException ex) {
+			return null;
+		}
 	}
 	
 	public List<Produto> consultarProdutosPorModelo(String modelo) {
