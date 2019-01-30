@@ -43,7 +43,7 @@ public class TelaListagemItens extends JFrame {
 		btnListar = new JButton("Listar");
 		btnListar.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			Fachada.inicializar();
+//			Fachada.inicializar();
 			try{
 				Cliente cliente = (Cliente)Fachada.getLogado();
 				Carrinho car = Fachada.consultarCarrinhoCliente(cliente);
@@ -54,14 +54,14 @@ public class TelaListagemItens extends JFrame {
 						texto +=   i.toString() + '\n';
 					}
 				else 	
-					texto += "Carrinho está vazio\n";
+					texto += "Carrinho esta vazio\n";
 
 				textArea.setText(texto);
 			}
 			catch(Exception erro){
 				JOptionPane.showMessageDialog(null,erro.getMessage());
 			}
-			Fachada.finalizar();
+//			Fachada.finalizar();
 		}
 	});
 

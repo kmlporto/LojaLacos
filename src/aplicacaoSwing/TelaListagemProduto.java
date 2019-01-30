@@ -43,7 +43,7 @@ public class TelaListagemProduto extends JFrame {
 		btnListar = new JButton("Listar");
 		btnListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Fachada.inicializar();
+//				Fachada.inicializar();
 				try{
 					String texto;
 					List<Produto> lista = Fachada.listarProdutos();
@@ -59,7 +59,7 @@ public class TelaListagemProduto extends JFrame {
 				catch(Exception erro){
 					JOptionPane.showMessageDialog(null,erro.getMessage());
 				}
-				Fachada.finalizar();
+//				Fachada.finalizar();
 			}
 		});
 		
