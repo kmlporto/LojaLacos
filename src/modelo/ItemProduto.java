@@ -30,6 +30,7 @@ public class ItemProduto {
 		this.produto.add(this);
 		this.quantidade = quantidade;
 		this.preco = this.produto.getPreco();
+		this.carrinho = carrinho;
 	}
 	
 	public ItemProduto(Produto produto, int quantidade, Carrinho carrinho, double preco) {

@@ -20,12 +20,14 @@ public class DAOCliente extends DAO<Cliente>{
 			return null;
 	}
 	
-	public  List<Cliente> consultarClientesPorParteNome(String caracteres) {
+	public  List<Cliente> consultarClientesPorParteNome(String caract) {
 		Query q = manager.createQuery(
 				"select c from Cliente c where c.nome like :n"
 			);
+		String caracteres = "%" + caract + "%";
 		q.setParameter("n", caracteres);
 		List<Cliente> resultado = q.getResultList();
+		System.out.println(resultado);
 		return resultado;
 	}
 	
