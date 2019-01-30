@@ -6,12 +6,12 @@ import javax.persistence.Query;
 import modelo.Usuario;
 
 public class DAOUsuario extends DAO<Usuario> {
-	public Usuario verificaUsuario (String user, String password) {
+	public Usuario verificaUsuario (String username, String password) {
 		Query q = manager.createQuery(
-				"select u from Usuario u where u.user=:n "
+				"select u from Usuario u where u.username=:n "
 				+ "AND u.password=:password"
 			);
-		q.setParameter("n", user);
+		q.setParameter("n", username);
 		q.setParameter("password", password);
 		Usuario resultado = (Usuario)q.getSingleResult();
 		return resultado;
