@@ -14,14 +14,14 @@ public class DAOProduto extends DAO<Produto>{
 	
 	public List<Produto> consultarProdutosPorDescricao(String descricao) {
 		Query q = manager.createQuery(
-			"select p from Produto p where p.descricao=:n;"
+			"select p from Produto p where p.descricao = :n"
 		);
 		q.setParameter("n", descricao);
 		List<Produto> resultado = q.getResultList();
-		if (resultado.size()>0)
+		//if (resultado.size()>0)
 			return resultado;
-		else 
-			return null;
+		//else 
+			//return null;
 	}
 	
 	public Produto consultarProdutoDMCL(String descricao,String modelo,  String cor, double largura) {
@@ -43,7 +43,7 @@ public class DAOProduto extends DAO<Produto>{
 	
 	public List<Produto> consultarProdutosPorModelo(String modelo) {
 		Query q = manager.createQuery(
-			"select p from Produto p where p.modelo=:n;"
+			"select p from Produto p where p.modelo=:n"
 		);
 		q.setParameter("n", modelo);
 		List<Produto> resultado = q.getResultList();
@@ -55,7 +55,7 @@ public class DAOProduto extends DAO<Produto>{
 
 	public int consultarQuantidadeProdutoPorTipo(String tipo) {
 		Query q = manager.createQuery(
-			"select p from Produto p where p.tipo=:n;"
+			"select p from Produto p where p.tipo=:n"
 		);
 		q.setParameter("n", tipo);
 		List<Produto> resultado = q.getResultList();
@@ -70,7 +70,7 @@ public class DAOProduto extends DAO<Produto>{
 //	
 	public List<Produto> consultarProdutosPorCor(String cor){
 		Query q = manager.createQuery(
-			"select p from Produto p where p.cor=:n;"
+			"select p from Produto p where p.cor=:n"
 		);
 		q.setParameter("n", cor);
 		List<Produto> resultado = q.getResultList();
@@ -82,7 +82,7 @@ public class DAOProduto extends DAO<Produto>{
 
 	public int consultarQuantidadeProdutoPorCor(String cor) {
 		Query q = manager.createQuery(
-				"select p from Produto p where p.cor=:n;"
+				"select p from Produto p where p.cor=:n"
 			);
 		q.setParameter("n", cor);
 		List<Produto> resultado = q.getResultList();
@@ -97,7 +97,7 @@ public class DAOProduto extends DAO<Produto>{
 	
 	public List<Produto> consultarProdutosSemEstoque(){
 	Query q = manager.createQuery(
-			"select p from Produto p where p.estoque > :n;"
+			"select p from Produto p where p.estoque > :n"
 		);
 		q.setParameter("n", 0);
 		List<Produto> resultado = q.getResultList();
