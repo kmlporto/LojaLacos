@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
-import modelo.Cliente;
 import modelo.Produto;
 
 
@@ -18,10 +17,7 @@ public class DAOProduto extends DAO<Produto>{
 		);
 		q.setParameter("n", descricao);
 		List<Produto> resultado = q.getResultList();
-		//if (resultado.size()>0)
-			return resultado;
-		//else 
-			//return null;
+		return resultado;
 	}
 	
 	public Produto consultarProdutoDMCL(String descricao,String modelo,  String cor, double largura) {
@@ -67,7 +63,7 @@ public class DAOProduto extends DAO<Produto>{
 		}	
 		return total;
 	}
-//	
+
 	public List<Produto> consultarProdutosPorCor(String cor){
 		Query q = manager.createQuery(
 			"select p from Produto p where p.cor=:n"
