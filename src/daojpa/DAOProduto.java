@@ -99,12 +99,12 @@ public class DAOProduto extends DAO<Produto>{
 	
 	public List<Produto> consultarProdutosSemEstoque(){
 		try {
-		Query q = manager.createQuery(
-				"select p from Produto p where p.estoque > :n"
-			);
-		q.setParameter("n", 0);
-		List<Produto> resultado = q.getResultList();
-		return resultado;
+			Query q = manager.createQuery(
+					"select p from Produto p where p.estoque > :n"
+				);
+			q.setParameter("n", 0);
+			List<Produto> resultado = q.getResultList();
+			return resultado;
 		} catch (NoResultException ex) {
 			return null;
 		}
