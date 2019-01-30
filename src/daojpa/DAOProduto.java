@@ -12,41 +12,46 @@ import modelo.Produto;
 public class DAOProduto extends DAO<Produto>{
 	
 	public List<Produto> consultarProdutosPorDescricao(String descricao) {
-		Query q = manager.createQuery(
-			"select p from Produto p where p.descricao = :n"
-		);
-		q.setParameter("n", descricao);
-		List<Produto> resultado = q.getResultList();
-		return resultado;
+		try {
+			Query q = manager.createQuery(
+				"select p from Produto p where p.descricao = :n"
+			);
+			q.setParameter("n", descricao);
+			List<Produto> resultado = q.getResultList();
+			return resultado;
+		} catch (NoResultException ex) {
+			return null;
+		}
 	}
 	
 	public Produto consultarProdutoDMCL(String descricao,String modelo,  String cor, double largura) {
 		try {
-		Query q = manager.createQuery(
-				"select p from Produto p where p.descricao=:d AND  "
-				+ "p.modelo=:m AND p.cor=:c AND  p.largura=:l"
-			);
-		q.setParameter("d", descricao);
-		q.setParameter("m", modelo);
-		q.setParameter("c", cor);
-		q.setParameter("l", largura);		
-		Produto resultado = (Produto) q.getSingleResult();
-		return resultado;
+			Query q = manager.createQuery(
+					"select p from Produto p where p.descricao=:d AND  "
+					+ "p.modelo=:m AND p.cor=:c AND  p.largura=:l"
+				);
+			q.setParameter("d", descricao);
+			q.setParameter("m", modelo);
+			q.setParameter("c", cor);
+			q.setParameter("l", largura);		
+			Produto resultado = (Produto) q.getSingleResult();
+			return resultado;
 		} catch (NoResultException ex) {
 			return null;
 		}
 	}
 	
 	public List<Produto> consultarProdutosPorModelo(String modelo) {
-		Query q = manager.createQuery(
-			"select p from Produto p where p.modelo=:n"
-		);
-		q.setParameter("n", modelo);
-		List<Produto> resultado = q.getResultList();
-		if (resultado.size()>0)
+		try {
+			Query q = manager.createQuery(
+				"select p from Produto p where p.modelo=:n"
+			);
+			q.setParameter("n", modelo);
+			List<Produto> resultado = q.getResultList();
 			return resultado;
-		else 
+		} catch (NoResultException ex) {
 			return null;
+		}
 	}
 
 	public int consultarQuantidadeProdutoPorTipo(String tipo) {
@@ -65,15 +70,16 @@ public class DAOProduto extends DAO<Produto>{
 	}
 
 	public List<Produto> consultarProdutosPorCor(String cor){
-		Query q = manager.createQuery(
-			"select p from Produto p where p.cor=:n"
-		);
-		q.setParameter("n", cor);
-		List<Produto> resultado = q.getResultList();
-		if (resultado.size()>0)
+		try {
+			Query q = manager.createQuery(
+				"select p from Produto p where p.cor=:n"
+			);
+			q.setParameter("n", cor);
+			List<Produto> resultado = q.getResultList();
 			return resultado;
-		else 
+		} catch (NoResultException ex) {
 			return null;
+		}
 	}
 
 	public int consultarQuantidadeProdutoPorCor(String cor) {
@@ -92,15 +98,16 @@ public class DAOProduto extends DAO<Produto>{
 	}
 	
 	public List<Produto> consultarProdutosSemEstoque(){
-	Query q = manager.createQuery(
-			"select p from Produto p where p.estoque > :n"
-		);
+		try {
+		Query q = manager.createQuery(
+				"select p from Produto p where p.estoque > :n"
+			);
 		q.setParameter("n", 0);
 		List<Produto> resultado = q.getResultList();
-		if (resultado.size()>0)
-			return resultado;
-		else 
+		return resultado;
+		} catch (NoResultException ex) {
 			return null;
+		}
 	}
 	
 }
