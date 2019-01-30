@@ -1,9 +1,10 @@
 package aplicacaoSwing;
-
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.List;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -14,9 +15,10 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 
 import fachada.Fachada;
+import modelo.Carrinho;
+import modelo.Cliente;
+import modelo.ItemProduto;
 import modelo.Produto;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 public class TelaListagemProduto extends JFrame {
 
@@ -31,7 +33,7 @@ public class TelaListagemProduto extends JFrame {
 				btnListar.doClick();
 			}
 		});
-		setTitle("Listar Produtos");
+		setTitle("Listar Itens");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 550, 290);
@@ -42,28 +44,26 @@ public class TelaListagemProduto extends JFrame {
 
 		btnListar = new JButton("Listar");
 		btnListar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-//				Fachada.inicializar();
-				try{
-					String texto;
-					List<Produto> lista = Fachada.listarProdutos();
-					texto = "Listagem de produtos: \n";
-					if (lista.isEmpty())
-						texto += "nao tem produto cadastrado\n";
-					else 	
-						for(Produto p: lista) 
-							texto +=  p + "\n"; 
+		public void actionPerformed(ActionEvent e) {
+			try{
+				List<Produto> lista = Fachada.listarProdutos();
+				String texto;
+				texto = "Listagem de produtos: \n";
+				if (lista != null)
+					for (Produto p: lista)
+					texto += p.toString() + "\n";
+				else 	
+					texto += "erro\n";
 
-					textArea.setText(texto);
-				}
-				catch(Exception erro){
-					JOptionPane.showMessageDialog(null,erro.getMessage());
-				}
-//				Fachada.finalizar();
+				textArea.setText(texto);
 			}
-		});
-		
-		JTextArea textArea = new JTextArea();
+			catch(Exception erro){
+				JOptionPane.showMessageDialog(null,erro.getMessage());
+			}
+		}
+	});
+
+		textArea = new JTextArea();
 		JScrollPane scroll = new JScrollPane(textArea);
 		scroll.setBounds(24, 29, 510, 174);
 		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);

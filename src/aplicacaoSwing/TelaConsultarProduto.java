@@ -52,11 +52,10 @@ public class TelaConsultarProduto extends JFrame {
 		btnConsultar = new JButton("Consultar");
 		btnConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Fachada.inicializar();
 				try{
 					String descricao = txtdescricao.getText();
 					List<Produto> produtos = Fachada.consultarProdutosPorDescricao(descricao);
-					String texto = "Listagem de contas: \n";
+					String texto = "Listagem de produtos: \n";
 					if (produtos.isEmpty())
 						texto += "nao possui produtos cadastrados\n";
 					else 	
@@ -72,7 +71,6 @@ public class TelaConsultarProduto extends JFrame {
 				catch(Exception erro){
 					lblmsg.setText(erro.getMessage());
 				}
-				Fachada.finalizar();
 			}
 		});
 		btnConsultar.setBounds(407, 12, 128, 23);

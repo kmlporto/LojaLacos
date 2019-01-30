@@ -96,7 +96,6 @@ public class TelaCadastroCliente extends JFrame {
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Fachada.inicializar();
 				try{
 					String nome = txtNome.getText();
 					String cpf = txtCpf.getText();
@@ -117,7 +116,6 @@ public class TelaCadastroCliente extends JFrame {
 				catch(Exception erro){
 					lblmsg.setText(erro.getMessage());
 				}
-				Fachada.finalizar();
 			}
 		});
 		btnCadastrar.setBounds(152, 169, 108, 23);

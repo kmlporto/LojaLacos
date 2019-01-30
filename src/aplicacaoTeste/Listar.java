@@ -8,9 +8,9 @@ public class Listar {
 	public Listar(){
 		Fachada.inicializar();
 		try {
-			System.out.println(Fachada.listarClientes());
+			//System.out.println(Fachada.listarClientes());
 			System.out.println(Fachada.listarProdutos());
-			System.out.println(Fachada.listarCarrinhos());
+			//System.out.println(Fachada.listarCarrinhos());
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(e.getMessage());

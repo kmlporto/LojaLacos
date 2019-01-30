@@ -97,7 +97,6 @@ public class TelaAlterarEstoqueProduto extends JFrame {
 		JButton btnAlterar = new JButton("Alterar");
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Fachada.inicializar();
 				try{
 					String descricao = txtDescricao.getText();
 					String modelo = txtModelo.getText();
@@ -117,7 +116,6 @@ public class TelaAlterarEstoqueProduto extends JFrame {
 				catch(Exception erro){
 					lblmsg.setText(erro.getMessage());
 				}
-				Fachada.finalizar();
 			}
 		});
 		btnAlterar.setBounds(211, 155, 108, 23);

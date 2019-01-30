@@ -87,7 +87,6 @@ public class TelaDeletarProduto extends JFrame {
 		JButton btnDeletar = new JButton("Deletar");
 		btnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Fachada.inicializar();
 				try{
 					String descricao = txtDescricao.getText();
 					String modelo = txtModelo.getText();
@@ -106,7 +105,6 @@ public class TelaDeletarProduto extends JFrame {
 				catch(Exception erro){
 					lblmsg.setText(erro.getMessage());
 				}
-				Fachada.finalizar();
 			}
 		});
 		btnDeletar.setBounds(194, 120, 108, 23);

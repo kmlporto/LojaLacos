@@ -57,30 +57,29 @@ public class TelaAdicionarItem extends JFrame {
 		contentPane.add(lblModelo);
 
 		List<String> modelos = new ArrayList<String>();
+		List<String> descricoes = new ArrayList<String>();
 		JComboBox<String> comboBoxModelo = new JComboBox<String>();
 		comboBoxModelo.setBounds(68, 11, 108, 20);
-		comboBoxModelo.addItem("----");
 		if (produtos !=null)
-			for(Produto p: produtos)
+			for(Produto p: produtos) {
 				if (!modelos.contains(p.getModelo()))
 					modelos.add(p.getModelo());
+				if (!descricoes.contains(p.getDescricao()))
+					descricoes.add(p.getDescricao());
+			}
 		for (String c: modelos)
 			comboBoxModelo.addItem(c);
 		contentPane.add(comboBoxModelo);
 		String modelo = String.valueOf(comboBoxModelo.getSelectedItem());
 
-
-		produtos = Fachada.listarProdutosPorModelo(modelo);
 		JLabel lblNome = new JLabel("Produto");
 		lblNome.setBounds(10, 42, 77, 14);
 		contentPane.add(lblNome);
 
 		JComboBox<String> comboBoxProd = new JComboBox<String>();
 		comboBoxProd.setBounds(68, 39, 203, 20);
-		comboBoxProd.addItem("----");
-		if (produtos !=null)
-			for(Produto p: produtos)
-				comboBoxProd.addItem(p.getDescricao());
+		for (String c: descricoes)
+			comboBoxProd.addItem(c);
 		contentPane.add(comboBoxProd);
 		String descricao = String.valueOf(comboBoxProd.getSelectedItem());
 
@@ -91,7 +90,6 @@ public class TelaAdicionarItem extends JFrame {
 		List<String> cores = new ArrayList<String>();
 		JComboBox<String> comboBoxCor = new JComboBox<String>();
 		comboBoxCor.setBounds(246, 11, 108, 20);
-		comboBoxCor.addItem("----");
 		if (produtos !=null)
 			for(Produto p: produtos)
 				if (!cores.contains(p.getCor()))
@@ -143,8 +141,8 @@ public class TelaAdicionarItem extends JFrame {
 						double preco = prod.getPreco();
 						Fachada.adicionarItemNoCarrinho(cliente, prod, quantidade, preco);
 						lblmsg.setText("Item adicionado com sucesso");
-					}else
-						lblmsg.setText("Item n�o encontrado");
+					}else 
+						lblmsg.setText("Item nao encontrado");
 
 					txtQtd.setText("");
 				}

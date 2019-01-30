@@ -121,7 +121,6 @@ public class TelaEditarProduto extends JFrame {
 		JButton btnAlterar = new JButton("Alterar");
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Fachada.inicializar();
 				try{
 					String descricao = txtDescricao.getText();
 					String modelo = txtModelo.getText();

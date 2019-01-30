@@ -43,7 +43,6 @@ public class TelaListagemItens extends JFrame {
 		btnListar = new JButton("Listar");
 		btnListar.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-//			Fachada.inicializar();
 			try{
 				Cliente cliente = (Cliente)Fachada.getLogado();
 				Carrinho car = Fachada.consultarCarrinhoCliente(cliente);
@@ -61,7 +60,6 @@ public class TelaListagemItens extends JFrame {
 			catch(Exception erro){
 				JOptionPane.showMessageDialog(null,erro.getMessage());
 			}
-//			Fachada.finalizar();
 		}
 	});
 

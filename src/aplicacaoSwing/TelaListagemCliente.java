@@ -42,7 +42,6 @@ public class TelaListagemCliente extends JFrame {
 		btnListar = new JButton("Listar");
 		btnListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Fachada.inicializar();
 				try{
 					String texto;
 					List<Cliente> lista = Fachada.listarClientes();
@@ -58,7 +57,6 @@ public class TelaListagemCliente extends JFrame {
 				catch(Exception erro){
 					JOptionPane.showMessageDialog(null,erro.getMessage());
 				}
-				Fachada.finalizar();
 			}
 		});
 		
