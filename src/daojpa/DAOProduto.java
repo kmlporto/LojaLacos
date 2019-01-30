@@ -14,9 +14,10 @@ public class DAOProduto extends DAO<Produto>{
 	public List<Produto> consultarProdutosPorDescricao(String descricao) {
 		try {
 			Query q = manager.createQuery(
-				"select p from Produto p where p.descricao = :n"
+				"select p from Produto p where p.descricao like :n"
 			);
-			q.setParameter("n", descricao);
+			String caracteres = "%" + descricao + "%";
+			q.setParameter("n", caracteres);
 			List<Produto> resultado = q.getResultList();
 			return resultado;
 		} catch (NoResultException ex) {
@@ -100,7 +101,7 @@ public class DAOProduto extends DAO<Produto>{
 	public List<Produto> consultarProdutosSemEstoque(){
 		try {
 			Query q = manager.createQuery(
-					"select p from Produto p where p.estoque > :n"
+					"select p from Produto p where p.estoque>:n"
 				);
 			q.setParameter("n", 0);
 			List<Produto> resultado = q.getResultList();
