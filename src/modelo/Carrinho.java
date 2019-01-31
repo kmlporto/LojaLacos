@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +19,7 @@ public class Carrinho {
 	private int id;
 	@OneToOne
 	private Pagamento pagamento;
-	@OneToMany(mappedBy="carrinho", cascade=CascadeType.ALL, orphanRemoval=true)
+	@OneToMany(mappedBy="carrinho", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<ItemProduto> itens = new ArrayList<ItemProduto>();
 	private double frete;
 	private double total;
@@ -86,9 +87,10 @@ public class Carrinho {
 	}
 	
 	public ItemProduto localizar(Produto produto) {
-		for (ItemProduto i: itens)
-			if(i.getProduto().equals(produto)) 
-				return i;
+		if (itens.size()>0)
+			for (ItemProduto i: itens)
+				if(i.getProduto().getId() == produto.getId())
+					return i;
 		return null;
 	}
 	// ......... outros ......
