@@ -29,7 +29,7 @@ public class DAOProduto extends DAO<Produto>{
 		try {
 			Query q = manager.createQuery(
 					"select p from Produto p where p.descricao=:d AND  "
-					+ "p.modelo=:m AND p.cor=:c AND  p.largura=:l"
+					+ "p.modelo=:m AND p.cor=:c AND p.largura=:l"
 				);
 			q.setParameter("d", descricao);
 			q.setParameter("m", modelo);

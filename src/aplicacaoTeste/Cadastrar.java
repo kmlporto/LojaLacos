@@ -50,6 +50,7 @@ public class Cadastrar {
 			Cliente c = Fachada.consultarClientePorNome(nome);
 			if (c!=null) {
 				Fachada.adicionarItemNoCarrinho(c,Fachada.consultarProdutoDMCL("tiara para bebe", "tiara","branco", 0.10), 3, 0);
+				Fachada.adicionarItemNoCarrinho(c,Fachada.consultarProdutoDMCL("tiara para bebe", "tiara","branco", 0.10), 3, 0);
 				Fachada.adicionarItemNoCarrinho(c,Fachada.consultarProdutoDMCL("piranha pequena com estampa de baloes","piranha", "azul", 0.05), 2, 0);
 				Fachada.adicionarItemNoCarrinho(c, Fachada.consultarProdutoDMCL("presilha com laco", "presilha","verde", 0.25), 1, 0);
 			}else System.out.println("Cliente "+ nome+" nao encontrado");
@@ -82,15 +83,14 @@ public class Cadastrar {
 				Fachada.adicionarItemNoCarrinho(c,Fachada.consultarProdutoDMCL("presilha com laco","presilha","marrom",0.15), 1, 0);
 			}else System.out.println("Cliente "+ nome+" nao encontrado");
 			
-			System.out.println("itens no carrinho - foi!");
+		System.out.println("itens no carrinho - foi!");
 		} catch (Exception e) {System.out.println(e.getMessage());}
 		try {
 			Fachada.adicionarPagamento("Kamila", "dinheiro");
 			Fachada.adicionarPagamento("Beatriz", "dinheiro");	
 			System.out.println("pagamento - foi!");
 		} catch (Exception e) {System.out.println(e.getMessage());}
-		
-		
+
 		Fachada.finalizar();
 		System.out.println("fim do programa");
 	}
