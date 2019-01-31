@@ -198,7 +198,7 @@ public class Fachada {
 		DAO.begin();
 		if(produto.getEstoque()<quantidade)
 			throw new Exception("cadastrar item - nao possui a quantidade desejada em estoque");
-		ItemProduto item = null;
+		ItemProduto item;
 		if(preco > 0)
 			item = new ItemProduto(produto, quantidade,carrinho, preco);
 		else 
@@ -213,14 +213,14 @@ public class Fachada {
 		DAO.begin();
 		Carrinho carrinho = cliente.getCarrinho();
 		ItemProduto item = carrinho.localizar(produto);
-		System.out.println(item);
 		if (item == null){
-			item = Fachada.cadastrarItemProduto(produto, quantidade, carrinho, preco);
-			carrinho.adicionar(item);
-			produto.setEstoque(produto.getEstoque()-quantidade);
-			carrinho.setFrete(carrinho.getFrete() + (quantidade*2));
-			carrinho.setTotal(carrinho.getTotal() + produto.getPreco()*quantidade);
-
+			if(produto.getEstoque()>= quantidade) {
+				item = Fachada.cadastrarItemProduto(produto, quantidade, carrinho, preco);
+				carrinho.adicionar(item);
+				produto.setEstoque(produto.getEstoque()-quantidade);
+				carrinho.setFrete(carrinho.getFrete() + (quantidade*2));
+				carrinho.setTotal(carrinho.getTotal() + produto.getPreco()*quantidade);
+			}
 		}else {
 			if(produto.getEstoque()>= quantidade) {
 				item.setQuantidade(item.getQuantidade()+quantidade);
