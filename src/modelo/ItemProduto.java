@@ -1,6 +1,8 @@
 package modelo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,13 +45,13 @@ public class ItemProduto {
 	
 	@Override
 	public String toString() {
-		return "Item:"+
-				"\n- produto: " +
-				"\n   descriao: " + produto.getDescricao() + 
-				"\n   modelo: " + produto.getModelo() +
-				"\n   cor: " + produto.getCor() +
-				"\n- quantidade:" + quantidade +
-				"\n- pre�o(und):" + preco;
+		return "\nItem:"+
+				"\n - produto: " +
+				"\n    descriao: " + produto.getDescricao() + 
+				"\n    modelo: " + produto.getModelo() +
+				"\n    cor: " + produto.getCor() +
+				"\n - quantidade:" + quantidade +
+				"\n - preco(und):" + preco;
 	}
 	
 	//.............. get's & set's..................
